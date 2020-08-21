@@ -1,0 +1,28 @@
+1、安装或升级go版本
+    1）golang 版本国内镜像库：http://mirrors.ustc.edu.cn/golang/
+    2）下载指定版本的go安装包，一键安装
+    3）升级go版本只需删除本地GOROOT安装路径再安装
+2、配置golang开发环境
+    1）GOPATH 工作空间目录："/Users/jon/workspace/goproject" 开发时go的项目存放路径
+    2）Mac环境的环境变量设置在vim ~/.bash_profile，在文件尾部添加如下配置，source ~/.profile使其生效
+        export GOROOT=/usr/local/go
+        export GOPATH=/Users/jon/workspace/goproject
+        export PATH=$PATH:${GOPATH//://bin:}/bin
+    3）配置国内代理：vi ～/.profile 加入如下配置后执行source ～/.profile
+        export GO111MODULE=on
+        export GOPROXY=https://goproxy.io
+3、关于安装第三方库：
+    1）进入cd $GOPATH/src/github.com/golang，如果没有目录就手动创建
+    2）下载插件 git clone https://github.com/golang/tools.git tools，下载完后，会多一个tools目录
+    
+    3）将tools拷贝到 $GOPATH/src/golang.org/x/tools（如果提示文件夹不存在则需要手动创建）
+        cp -r $GOPATH/src/github.com/golang/tools $GOPATH/src/golang.org/x/
+
+    4）接下来可以安装无法安装的插件，需要切换到cd $GOPATH目录，使用 go install安装：
+        go install github.com/ramya-rao-a/go-outline
+        go install golang.org/x/tools/cmd/guru
+        ......
+        只要提示你哪个无法安装的就以这种形式安装
+        golang.org/x不止tools，还有其它的工具，如果提示无法下载，还可以直接下载：
+        cd $GOPATH/src/golang.org/x
+        git clone https://github.com/golang/text.git
