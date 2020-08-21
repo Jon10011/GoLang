@@ -26,3 +26,8 @@
         golang.org/x不止tools，还有其它的工具，如果提示无法下载，还可以直接下载：
         cd $GOPATH/src/golang.org/x
         git clone https://github.com/golang/text.git
+
+4、遇到无法安装的第三方时，可以在终端执行以下，如：
+    jon@192 goproject % export GO111MODULE=on
+    jon@192 goproject % export GOPROXY=https://goproxy.io
+    jon@192 goproject % go get github.com/go-delve/delve/cmd/dlv
