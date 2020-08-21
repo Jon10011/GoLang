@@ -10,6 +10,7 @@ func fbn(n int) []uint64 {
 	for i := 2; i < n; i++ {
 		slic[i] = slic[i-1] + slic[i-2]
 	}
+	
 	return slic
 }
 
